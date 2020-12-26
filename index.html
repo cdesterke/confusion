@@ -1,7 +1,9 @@
 <html>
 <head>
-<title>Body Mass Index</title>
+<title>Confusion Matrix Calculator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 
 <style>
 
@@ -187,50 +189,68 @@ select{
 </style>
 
 
+
+
 <script language="JavaScript">
 <!--
+
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
+
 function calculate() {
-var FP = document.Form.FP.value
-var TP = document.Form.TP.value
-var FN = document.Form.FN.value
-if(FP > 0 && TP > 0 FN > 0){	
-var precision = TP/(TP+FP)
-document.Form.precision.value = precision
+var tp = Number(document.mainForm.tp.value);
+var fp = Number(document.mainForm.fp.value);
+var fn = Number(document.mainForm.fn.value);
+
+if(tp > 0 && fp > 0){	
+var finalprecision = roundToTwo(tp / (tp+fp));
+document.mainForm.precision.value = finalprecision;
 }
+
+if(tp > 0 && fn > 0){	
+var finalrecall = roundToTwo(tp / (tp+fn));
+document.mainForm.recall.value = finalrecall;
+}
+
+if(tp > 0 && fn > 0 && fp > 0){	
+var finalF1 = roundToTwo(((2*finalprecision*finalrecall)/(finalprecision+finalrecall)))
+document.mainForm.f1.value = finalF1;
+}
+
+
 else{
-alert("Please Fill in correctly")
+alert("Please Fill in everything correctly")
 }
+
 }
 //-->
 </script>
 
 </head>
 <body>
-<center><h3>Confusion matrix</h3></center>
+<center><h3>Confusion Matrix Calculator</h3></center>
 
 
-<form name="Form">
+<form name="mainForm">
 <ul class="form-style-1">
 
-<br>False Positive: <input type="text" name="FP" size="10"><br/>
-
-<br>False Negative: <input type="text" name="FN" size="10"><br/>
-
- <br>True Positive: <input type="text" name="TP" size="10"><br />
+<br>True positive: <input type="text" name="tp" size="5"><br/>
+<br>False positive: <input type="text" name="fp" size="5"><br />
+<br>False negative: <input type="text" name="fn" size="5"><br />
 
 <input type="button" value="Calculate" onClick="calculate()"><br />
 
-<br>Precision: <input type="text" name="precision" size="25"><br />
-
-<br>Recall: <input type="text" name="recall" size="25"><br/>
-
+<br>Precision: <input type="text" name="precision" size="5"><br />
+<br>Recall: <input type="text" name="recall" size="5"><br/>
+<br>F1-score: <input type="text" name="f1" size="5"><br/>
 <input type="reset" value="Reset" />
 
- </ul>
+</ul>
 </form>
 <script language="JavaScript">
 var today = new Date()
-document.write(today)
+document.write(today) 
 </script>
 </body>
 </html>
