@@ -8,4 +8,4 @@ link: <https://objective-easley-68bfc2.netlify.app/>
 
 > formula recall = true positive / (true positive + false negative)
 
-> formula F1-score = 2'*'precision'*'recall / precision+recall
+> formula F1-score = 2 X precision X recall / precision + recall
