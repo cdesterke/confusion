@@ -200,12 +200,18 @@ function roundToTwo(num) {
 
 function calculate() {
 var tp = Number(document.mainForm.tp.value);
+var tn = Number(document.mainForm.tn.value);
 var fp = Number(document.mainForm.fp.value);
 var fn = Number(document.mainForm.fn.value);
 
 if(tp > 0 && fp > 0){	
 var finalprecision = roundToTwo(tp / (tp+fp));
 document.mainForm.precision.value = finalprecision;
+}
+
+if(fp > 0 && tn > 0){	
+var finalspecificity = roundToTwo(tn / (tn+fp));
+document.mainForm.specificity.value = finalspecificity;
 }
 
 if(tp > 0 && fn > 0){	
@@ -236,13 +242,15 @@ alert("Please Fill in everything correctly")
 <ul class="form-style-1">
 
 <br>True positive: <input type="text" name="tp" size="5"><br/>
+<br>True negative: <input type="text" name="tn" size="5"><br/>
 <br>False positive: <input type="text" name="fp" size="5"><br />
 <br>False negative: <input type="text" name="fn" size="5"><br />
 
 <input type="button" value="Calculate" onClick="calculate()"><br />
 
 <br>Precision: <input type="text" name="precision" size="5"><br />
-<br>Recall: <input type="text" name="recall" size="5"><br/>
+<br>Specificity: <input type="text" name="specificity" size="5"><br />
+<br>Recall or sensibility: <input type="text" name="recall" size="5"><br/>
 <br>F1-score: <input type="text" name="f1" size="5"><br/>
 <input type="reset" value="Reset" />
 
