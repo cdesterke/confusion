@@ -204,22 +204,22 @@ var tn = Number(document.mainForm.tn.value);
 var fp = Number(document.mainForm.fp.value);
 var fn = Number(document.mainForm.fn.value);
 
-if(tp > 0 && fp > 0){	
+if(tp >= 0 && fp >= 0){	
 var finalprecision = roundToTwo(tp / (tp+fp));
 document.mainForm.precision.value = finalprecision;
 }
 
-if(fp > 0 && tn > 0){	
+if(fp >= 0 && tn >= 0){	
 var finalspecificity = roundToTwo(tn / (tn+fp));
 document.mainForm.specificity.value = finalspecificity;
 }
 
-if(tp > 0 && fn > 0){	
+if(tp >= 0 && fn >= 0){	
 var finalrecall = roundToTwo(tp / (tp+fn));
 document.mainForm.recall.value = finalrecall;
 }
 
-if(tp > 0 && fn > 0 && fp > 0){	
+if(tp >= 0 && fn >= 0 && fp >= 0){	
 var finalF1 = roundToTwo(((2*finalprecision*finalrecall)/(finalprecision+finalrecall)))
 document.mainForm.f1.value = finalF1;
 }
